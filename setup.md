@@ -85,4 +85,3 @@ sudo apt install -y python3 python3-pip python3-venv
 sudo apt install -y docker.io docker-compose-plugin
 sudo usermod -aG docker "$USER"
 ```
-

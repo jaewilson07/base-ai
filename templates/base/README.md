@@ -16,7 +16,11 @@ node scripts/sync-ai-instructions.mjs
 
 ## What's included
 
+- `pyproject.toml`: Python packaging + Ruff config (Pydantic / pydantic-ai / LangGraph baseline deps)
 - `ai/INSTRUCTIONS.md`: canonical agent rules + working agreement
 - `ai/PROMPTS.md`: reusable prompt fragments
 - `ai/SKILLS.md`: expectations / ways of working
 - `ai/TOOLS.md`: tool usage conventions (repo-agnostic)
+- `.pre-commit-config.yaml`: standard pre-commit checks
+- `.github/workflows/pr-checks.yml`: CI running pre-commit on PRs
+- `.github/workflows/release-please.yml`: SemVer automation (Release Please)

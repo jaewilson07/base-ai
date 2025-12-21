@@ -3,7 +3,8 @@
   "release-type": "simple",
   "packages": {
     ".": {
-      "package-name": "create-base-ai"
+      "package-name": "{{projectName}}"
     }
   }
 }
+

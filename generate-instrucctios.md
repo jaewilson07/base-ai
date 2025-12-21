@@ -202,4 +202,3 @@ A production-ready `.github/copilot-instructions.md` file that:
 5. Can be immediately committed to the repository
 
 If critical information is missing during discovery, ask targeted questions rather than making assumptions.
-

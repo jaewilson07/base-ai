@@ -1,0 +1,2 @@
+"""Memory domain (interfaces + adapters)."""
+
