@@ -21,6 +21,7 @@ node scripts/sync-ai-instructions.mjs
 - `ai/PROMPTS.md`: reusable prompt fragments
 - `ai/SKILLS.md`: expectations / ways of working
 - `ai/TOOLS.md`: tool usage conventions (repo-agnostic)
+- `.github/prompts/backend-engineer.prompt.md`: Copilot prompt/agent for backend work
 - `.pre-commit-config.yaml`: standard pre-commit checks
 - `.github/workflows/pr-checks.yml`: CI running pre-commit on PRs
 - `.github/workflows/release-please.yml`: SemVer automation (Release Please)

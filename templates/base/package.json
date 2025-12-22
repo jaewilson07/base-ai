@@ -6,4 +6,3 @@
     "sync:ai": "node scripts/sync-ai-instructions.mjs"
   }
 }
-

@@ -1,2 +1,1 @@
 """Storage domain (interfaces + adapters)."""
-

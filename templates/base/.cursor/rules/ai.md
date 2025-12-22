@@ -38,4 +38,3 @@
 - Keep changes small, reviewable, and consistent with existing patterns.
 - Prefer adding/adjusting tests alongside behavior changes when feasible.
 - Avoid introducing new dependencies unless clearly justified.
-

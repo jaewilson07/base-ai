@@ -7,4 +7,3 @@ Keep prompts domain-oriented and contract-driven.
 - Define a Pydantic model for the expected output.
 - Ask the model to produce JSON that validates against it.
 - Validate + retry/repair on parse failures.
-
