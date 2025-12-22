@@ -13,6 +13,7 @@ npm init base-ai my-project
 ## What it generates
 
 - `.github/copilot-instructions.md` (Copilot Chat instructions)
+- `.github/prompts/*.prompt.md` (Copilot prompt/agent pack)
 - `.cursor/rules/ai.md` and `.cursorrules` (Cursor rules)
 - `ai/` (canonical docs: agent behavior, prompts, skills, tools)
 - `scripts/sync-ai-instructions.mjs` (keeps Cursor + Copilot files identical)

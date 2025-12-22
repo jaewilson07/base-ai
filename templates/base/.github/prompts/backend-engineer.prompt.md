@@ -257,4 +257,3 @@ Use Context7 to fetch accurate, up-to-date library documentation instead of rely
 - Share your thought process – don't just present conclusions
 - If you encounter blockers, explain what's missing and what you need
 - After task completion, list any suggested improvements separately (don't mix with the solution)
-
