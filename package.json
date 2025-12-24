@@ -10,13 +10,9 @@
   },
   "author": "REPLACE_ME",
   "homepage": "REPLACE_ME",
-  "bugs": {
-    "url": "REPLACE_ME"
-  },
+  "bugs": {},
   "type": "commonjs",
-  "bin": {
-    "create-base-ai": "bin/create-base-ai.js"
-  },
+  "bin": "./bin/create-base-ai.js",
   "files": [
     "bin/",
     "templates/"
