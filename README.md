@@ -10,6 +10,13 @@ npx create-base-ai my-project
 npm init base-ai my-project
 ```
 
+### Install into an existing repo (no overwrites)
+
+```bash
+# from inside an existing repo:
+npx create-base-ai . --merge
+```
+
 ## What it generates
 
 - `.github/copilot-instructions.md` (Copilot Chat instructions)
