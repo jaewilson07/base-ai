@@ -245,4 +245,3 @@ Produce one or more `.github/instructions/*.instructions.md` files that:
 5. Can be immediately committed to the repository
 
 If the scope is unclear, ask targeted questions rather than creating overly broad instruction files.
-

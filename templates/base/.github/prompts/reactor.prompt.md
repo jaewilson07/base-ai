@@ -278,4 +278,3 @@ Before delivering refactored code:
 ---
 
 **Philosophy**: Refactoring is about making code easier to understand and modify, not about applying patterns for their own sake. The best refactoring is the one that wasn't needed because the code was already good.
-

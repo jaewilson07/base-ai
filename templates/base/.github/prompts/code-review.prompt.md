@@ -47,4 +47,3 @@ Guidance:
 - If the review scope is unclear, first respond with the clarification questions needed to proceed.
 - When the code appears solid, state residual risks (e.g., untested failure modes) so the user knows what was considered.
 - Suggest targeted improvements rather than broad rewrites; cite rationale grounded in observed code and instructions.
-
