@@ -1,0 +1,25 @@
+{
+  "name": "create-base-ai",
+  "version": "0.1.0",
+  "description": "Scaffold a new repo with shared Cursor + Copilot AI instructions.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "REPLACE_ME"
+  },
+  "author": "REPLACE_ME",
+  "type": "commonjs",
+  "bin": {
+    "create-base-ai": "bin/create-base-ai.js"
+  },
+  "files": [
+    "bin/",
+    "templates/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "node --check bin/create-base-ai.js"
+  }
+}
