@@ -1,6 +1,6 @@
 {
   "bootstrap-sha": "",
-  "release-type": "simple",
+  "release-type": "node",
   "packages": {
     ".": {
       "package-name": "create-base-ai"

@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "description": "Scaffold a new repo with shared Cursor + Copilot AI instructions.",
   "license": "MIT",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "REPLACE_ME"
   },
   "author": "REPLACE_ME",
+  "homepage": "REPLACE_ME",
+  "bugs": {
+    "url": "REPLACE_ME"
+  },
   "type": "commonjs",
   "bin": {
     "create-base-ai": "bin/create-base-ai.js"
@@ -16,6 +21,9 @@
     "bin/",
     "templates/"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
