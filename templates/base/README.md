@@ -14,6 +14,28 @@ Base project scaffold with **shared AI instructions** for:
 node scripts/sync-ai-instructions.mjs
 ```
 
+<<<<<<< HEAD
+## Pre-commit (recommended)
+
+This template includes `.pre-commit-config.yaml`, and CI runs `pre-commit run --all-files` on every PR.
+
+Install and enable it locally:
+
+```bash
+python3 -m pip install --upgrade pre-commit
+pre-commit install
+```
+
+Run it manually before pushing (recommended):
+
+```bash
+pre-commit run --all-files
+```
+
+If CI fails with “files were modified by this hook”, run pre-commit locally, commit the resulting changes, and push again.
+
+=======
+>>>>>>> main
 ## What's included
 
 - `pyproject.toml`: Python packaging + Ruff config (Pydantic / pydantic-ai / LangGraph baseline deps)

@@ -1,4 +1,4 @@
-<!-- AUTO-GENERATED: edit ai/INSTRUCTIONS.md then run scripts/sync-ai-instructions.mjs -->
+git branh<!-- AUTO-GENERATED: edit ai/INSTRUCTIONS.md then run scripts/sync-ai-instructions.mjs -->
 
 # {{projectName}}
 

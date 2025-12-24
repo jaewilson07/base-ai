@@ -13,9 +13,11 @@ function usage() {
       "Usage:",
       "  npx create-base-ai <project-directory> [--yes]",
       "  npm init base-ai <project-directory> [--yes]",
+      "  npx create-base-ai . --merge   # install into existing repo (skip existing files)",
       "",
       "Options:",
       "  --yes       Skip confirmation prompts",
+      "  --merge     Allow non-empty directory; never overwrite existing files",
       "  -h, --help  Show help",
     ].join("\n"),
   );
@@ -23,10 +25,11 @@ function usage() {
 
 function parseArgs(argv) {
   const args = argv.slice(2);
-  const out = { yes: false, help: false, dir: null };
+  const out = { yes: false, merge: false, help: false, dir: null };
 
   for (const a of args) {
     if (a === "--yes") out.yes = true;
+    else if (a === "--merge") out.merge = true;
     else if (a === "-h" || a === "--help") out.help = true;
     else if (!out.dir) out.dir = a;
     else {
@@ -51,19 +54,29 @@ function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-function copyDir(srcDir, destDir, transformFile) {
+function copyDir(srcDir, destDir, { transformFile, merge, created, skipped }) {
   ensureDir(destDir);
   const entries = fs.readdirSync(srcDir, { withFileTypes: true });
   for (const entry of entries) {
     const srcPath = path.join(srcDir, entry.name);
     const destPath = path.join(destDir, entry.name);
     if (entry.isDirectory()) {
-      copyDir(srcPath, destPath, transformFile);
+      copyDir(srcPath, destPath, { transformFile, merge, created, skipped });
     } else if (entry.isFile()) {
       const buf = fs.readFileSync(srcPath);
       const out = transformFile ? transformFile(entry.name, srcPath, buf) : buf;
       fs.mkdirSync(path.dirname(destPath), { recursive: true });
-      fs.writeFileSync(destPath, out, { flag: "wx" });
+      try {
+        fs.writeFileSync(destPath, out, { flag: "wx" });
+        if (created) created.push(destPath);
+      } catch (e) {
+        // In merge mode, skip files that already exist.
+        if (merge && e && e.code === "EEXIST") {
+          if (skipped) skipped.push(destPath);
+          continue;
+        }
+        throw e;
+      }
     }
   }
 }
@@ -84,7 +97,7 @@ function promptYesNo(question) {
 }
 
 function main() {
-  const { yes, help, dir } = parseArgs(process.argv);
+  const { yes, merge, help, dir } = parseArgs(process.argv);
   if (help || !dir) {
     usage();
     process.exit(help ? 0 : 1);
@@ -99,15 +112,16 @@ function main() {
   }
 
   ensureDir(projectDir);
-  if (!isDirEmpty(projectDir)) {
+  if (!merge && !isDirEmpty(projectDir)) {
     console.error(
-      `Target directory is not empty: ${projectDir}\nRefusing to overwrite.`,
+      `Target directory is not empty: ${projectDir}\nRefusing to overwrite (use --merge to skip existing files).`,
     );
     process.exit(1);
   }
 
   if (!yes) {
     console.log(`About to scaffold into: ${projectDir}`);
+    if (merge) console.log("Merge mode: will NOT overwrite existing files.");
     if (!promptYesNo("Continue?")) process.exit(0);
   }
 
@@ -116,15 +130,25 @@ function main() {
     year: new Date().getFullYear(),
   };
 
-  copyDir(TEMPLATE_DIR, projectDir, (_name, _srcPath, bytes) =>
-    renderTemplateBytes(bytes, vars),
-  );
+  const created = [];
+  const skipped = [];
+  copyDir(TEMPLATE_DIR, projectDir, {
+    merge,
+    created,
+    skipped,
+    transformFile: (_name, _srcPath, bytes) => renderTemplateBytes(bytes, vars),
+  });
 
   console.log("");
   console.log("Done.");
+  if (merge) {
+    console.log("");
+    console.log(`Created: ${created.length} file(s)`);
+    console.log(`Skipped (already existed): ${skipped.length} file(s)`);
+  }
   console.log("");
   console.log("Next steps:");
-  console.log(`  cd ${dir}`);
+  if (dir !== ".") console.log(`  cd ${dir}`);
   console.log("  npm run sync:ai  # keep Cursor + Copilot instructions identical");
 }
 
